@@ -34,7 +34,9 @@ export class SigninComponent implements OnInit {
       return;
     } else {
       this.authService.signin(this.authForm.value).subscribe({
-        next: value => {},
+        next: () => {
+          this.router.navigateByUrl('/inbox').then(() => console.log('navigated to inbox...'));
+        },
         error: ({error}) => {
           if ( error.username || error.password ) {
             this.authForm.setErrors({credentials: true});
