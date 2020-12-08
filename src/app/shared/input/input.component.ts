@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./input.component.scss']
 })
 export class InputComponent implements OnInit {
+  @Input() label: string;
+  @Input() control: FormControl;
+  @Input() inputType = 'text';
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  showError(): ValidationErrors {
+    const {dirty, touched, errors} = this.control;
+    return (dirty && touched && errors);
+  }
 }

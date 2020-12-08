@@ -1,22 +1,12 @@
 <h3>Create an account</h3>
-<form class="ui form" [formGroup]="authForm">
-  <div class="field">
-    <label for="username">Username</label>
-    <input id="username" class="input" formControlName="username">
+<form class="ui form" [formGroup]="authForm" autocomplete="off" (ngSubmit)="onSubmit()">
+  <app-input label="Username" [control]="authForm.get('username')"></app-input>
+  <app-input label="Password" [control]="authForm.get('password')" inputType="password"></app-input>
+  <app-input label="Confirm Password" [control]="authForm.get('passwordConfirmation')" inputType="password"></app-input>
+  <div class="ui pointing red basic label" *ngIf="authForm.get('password').touched && authForm.get('passwordConfirmation').touched && authForm.errors">
+    <p *ngIf="authForm.errors.passwordDontMatch">Password must match</p>
   </div>
-  {{authForm.get('username').errors | json}}
-
-  <div class="field">
-    <label for="password">Password</label>
-    <input id="password" class="input" formControlName="password">
+  <div>
+    <button class="ui submit button primary" type="submit">Submit</button>
   </div>
-  {{authForm.get('password').errors | json}}
-
-  <div class="field">
-    <label for="passwordConfirmation">Confirm Password</label>
-    <input id="passwordConfirmation" class="input" formControlName="passwordConfirmation">
-  </div>
-  {{authForm.get('passwordConfirmation').errors | json}}
-
-  <button class="ui submit button primary">Submit</button>
 </form>
