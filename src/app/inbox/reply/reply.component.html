@@ -1,1 +1,6 @@
-<p>reply works!</p>
+<button class="ui button inverted primary fluid" (click)="showModal = true">Reply</button>
+
+<app-modal *ngIf="showModal" (dismiss)="showModal = false">
+  <h3 modalHeader>Reply</h3>
+  <app-email-form [email]="email" (submittedEmail)="onSubmit($event)"></app-email-form>
+</app-modal>

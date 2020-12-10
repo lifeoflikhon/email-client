@@ -3,8 +3,10 @@
     <h3>{{email.subject}}</h3>
     <p>From: {{email.from}}</p>
     <p>To: {{email.to}}</p>
-    <hr>
-    <p *ngIf="!email.html">{{email.text}}</p>
-    <div [innerHTML]="email.html"></div>
+  </div>
+  <div>
+    <app-reply [email]="email"></app-reply>
   </div>
 </div>
+<hr>
+<div [innerHTML]="email.html || email.text"></div>
