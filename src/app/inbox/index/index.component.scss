@@ -1,0 +1,21 @@
+.content {
+  padding: 10px 5px;
+
+  .trim {
+    width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &:hover {
+      overflow: unset;
+      white-space: unset;
+    }
+  }
+}
+
+a.active {
+  .content {
+    background: #02020210;
+  }
+}
